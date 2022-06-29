@@ -38,6 +38,8 @@ $data = json_decode(file_get_contents($url), true);
             </thead>
             <tbody>
                 <?php
+                // Variable que guardara el nuevo objeto
+                $nuevoArray = [];
                 // Clico para imprimir los datos en una tabla
                 for ($x = 0; $x < count($data); $x++) {
                     // Sentencia if para filtrar por color = green
@@ -47,8 +49,15 @@ $data = json_decode(file_get_contents($url), true);
                         <td scope="row"><?php echo $data[$x]['id']; ?></td>
                         <td><?php echo $data[$x]['type']; ?></td>
                         <td><?php echo $data[$x]['color'];
-                        }} ?></td>
-                    </tr>
+                        // Añadimos los resultados filtrados a un nuevo array
+                        array_push($nuevoArray,array('id'=>$data[$x]['id'],'type'=>$data[$x]['type'],'color'=>$data[$x]['color']));
+                        }} 
+                        // Convertimos los resultados a JSON
+                        $json = json_encode($nuevoArray);
+                        // Volcamos el JSON a un archivo
+                        $bytes = file_put_contents("Respuesta.json",$json);
+                        ?></td>
+                </tr>
             </tbody>
         </table>
     </div>
