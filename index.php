@@ -35,12 +35,13 @@ $data = json_decode(file_get_contents($url), true);
             <tbody>
                 <?php
                 for ($x = 0; $x < count($data); $x++) {
+                    if($data[$x]['color'] == 'green'){
                 ?>
                     <tr>
                         <td scope="row"><?php echo $data[$x]['id']; ?></td>
                         <td><?php echo $data[$x]['type']; ?></td>
                         <td><?php echo $data[$x]['color'];
-                        } ?></td>
+                        }} ?></td>
                     </tr>
             </tbody>
         </table>
