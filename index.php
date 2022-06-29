@@ -1,19 +1,23 @@
 <?php
+// URL que obtiene un JSON con datos generales sobre 5 objetos
 $url = "https://my-json-server.typicode.com/dp-danielortiz/dptest_jsonplaceholder/items";
+// Linea que obtiene los datos y los vuelca en una variable
 $data = json_decode(file_get_contents($url), true);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Inicia HEAD -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS de Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Prueba Uno</title>
 </head>
-
+<!-- Finaliza HEAD -->
+<!-- Inicia BODY -->
 <body>
     <nav class="navbar bg-light">
         <div class="container">
@@ -34,7 +38,9 @@ $data = json_decode(file_get_contents($url), true);
             </thead>
             <tbody>
                 <?php
+                // Clico para imprimir los datos en una tabla
                 for ($x = 0; $x < count($data); $x++) {
+                    // Sentencia if para filtrar por color = green
                     if($data[$x]['color'] == 'green'){
                 ?>
                     <tr>
@@ -47,6 +53,7 @@ $data = json_decode(file_get_contents($url), true);
         </table>
     </div>
 </body>
+<!-- Finaliza BODY -->
+<!-- JS de Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
 </html>
